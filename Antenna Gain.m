@@ -20,7 +20,7 @@ Wavelength = 3*10^8/Frequency;
 %OTHER VALUES: 
 %Trans_Loss = 0.18; %vswr = 1.5
 Misc_Loss = 0;
-Rec_Ant_Gain = 12.5 -2.41;
+Rec_Ant_Gain = 12.5 -2.41; % CHECK UNIT!!
 Rec_Loss = 0; %vswr = 1.07
 Distance = 1.778;%anechoic chamber length
 Friis_Eq = 20*log10(Wavelength/(4*pi*(Distance)));
