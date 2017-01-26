@@ -22,21 +22,45 @@ delta_Friis = data_matrix(:,endCol_Lfs:endCol_deltaFriis);
 
 figure
 set(gca,'FontSize',14)
+set(0,'DefaultLineMarkerSize',12);
 hold on
 num_dist = size(data_matrix,1);
 
 % TODO: the following plotting doesn't seem efficient...
-for i = 1:num_dist
-    if polarization(i) == 1 %v/v
-        plot(distances_m(i)*ones(1,num_trials), L_fs(i,:),'r*');
-    elseif polarization(i) == 2 %v/h
-        plot(distances_m(i)*ones(1,num_trials), L_fs(i,:),'bx');
-    else
-        plot(distances_m(i)*ones(1,num_trials), L_fs(i,:),'go');
+plot_all_points = false;
+plot_mean_std = true;
+
+if plot_all_points
+    for i = 1:num_dist
+        if polarization(i) == 1 %v/v
+            plot(distances_m(i)*ones(1,num_trials), L_fs(i,:),'r*');
+        elseif polarization(i) == 2 %v/h
+            plot(distances_m(i)*ones(1,num_trials), L_fs(i,:),'bx');
+        else
+            plot(distances_m(i)*ones(1,num_trials), L_fs(i,:),'go');
+        end
     end
+    
+    legend('V/V','V/H','H/H')
 end
 
-legend('V/V','V/H','H/H')
+if plot_mean_std
+    for i = 1:num_dist
+        if polarization(i) == 1 %v/v
+            h1 = plot(distances_m(i), mean(L_fs(i,:)),'r*');
+            errorbar(distances_m(i),mean(L_fs(i,:)),std(L_fs(i,:)),'r');
+        elseif polarization(i) == 2 %v/h
+            h2 = plot(distances_m(i), mean(L_fs(i,:)),'bx');
+            errorbar(distances_m(i),mean(L_fs(i,:)),std(L_fs(i,:)),'b');
+        else
+            h3 = plot(distances_m(i), mean(L_fs(i,:)),'go');
+            errorbar(distances_m(i),mean(L_fs(i,:)),std(L_fs(i,:)),'g');
+        end
+    end
+    legend([h1 h2 h3],{'V/V','V/H','H/H'});
+end
+
+
 title('Big Beckman Along Same Level Path Loss')
 ylabel('Path Loss (dB)')
 xlabel('Distance between Antennas (m)')
