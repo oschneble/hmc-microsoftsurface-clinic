@@ -29,7 +29,7 @@ Friis_Eq = 20*log10(Wavelength/(4*pi*(Distance)));%FREE SPACE PATH LOSS FAR FIEL
 %GAIN CALCULATION:
 % Rec_P = Trans_P + Trans_Ant_Gain - Trans_Loss - Misc_Loss + Rec_Ant_Gain - Rec_Loss + Friis_Eq
 % S21 is ReP-TransP (or ratio of Pforward/Ptotal)
-Trans_Ant_Gain = S21 - MM_Loss - Rec_Ant_Gain - Friis_Eq
+Trans_Ant_Gain = S21 + MM_Loss - Rec_Ant_Gain - Friis_Eq
 
 %Dipole antenna 1: Trans_Ant_Gain = 3.1856 with vswr S11 = 1.6 vswr S22 =
 %1.07 Rec_P = -32.22
