@@ -3,7 +3,7 @@
 % Cherie Ho. Microsoft Surface Clinic, Fall 2016
 
 %% Data File Parameters
-folder_name = '/Users/cherieho/Downloads/Big Beckman 1-18/SameLevelDay1/'
+folder_name = '/Users/cherieho/Downloads/'
 data_file_name = 'processed_data.csv'
 data_file_add = strcat(folder_name, data_file_name);
 data_matrix = csvread(data_file_add);      % puts info in matrix M
@@ -57,11 +57,11 @@ if plot_mean_std
             errorbar(distances_m(i),mean(L_fs(i,:)),std(L_fs(i,:)),'g');
         end
     end
-    legend([h1 h2 h3],{'V/V','V/H','H/H'});
+%     legend([h1 h2],{'V/V','V/H'});
 end
 
 
-title('Big Beckman Along Same Level Path Loss')
+title('Through Floor 5.2 GHz Path Loss')
 ylabel('Path Loss (dB)')
 xlabel('Distance between Antennas (m)')
 hold off
