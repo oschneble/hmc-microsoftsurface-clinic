@@ -6,23 +6,24 @@
 % associated set of lengths, and other pertinent info, calculates the path
 % loss for each measurement.
 
-cf = 5.2E9;        % center frequency in Hertz
-is_5GHz = true;
+cf = 2.45E9;        % center frequency in Hertz
+is_5GHz = false;
 
-% ref_file is the filename of a reference .csv file with distance and
+% ref_file is the filename of a reference .csv/Users/cherieho/Downloads file with distance and
 % filename information
 % format is Distance (m), Power (dBm), Trace1, Trace2, Trace3,...
 % For this implementation only the distances are needed
 
-folder_name = '/Users/cherieho/Downloads/'
-ref_file_name = 'ref_thru_floor_5GHz.csv'
+folder_name = '/Users/cherieho/Downloads/hallway_2-4/'
+ref_file_name = 'ref_24_hallway.csv'
 ref_file_add = strcat(folder_name,ref_file_name);  
 skip_row_num = 2; % Currently: Header has 2 rows
-skip_col_num = 3; % Currently: Skip 3 columns
+skip_col_num = 1; % Currently: Skip 3 columns
 num_trials = 6; % Hexagon Data Collection
 
 
-output_matrix = csvread(ref_file_add, skip_row_num, skip_col_num);      % puts info in matrix M
+output_matrix = csvread(ref_file_add, skip_row_num, skip_col_num)
+%     [skip_row_num skip_col_num 9 14]);      % puts info in matrix M
 % output_matrix = output_matrix(8:15,:);
 
 % tran_receive_m = output_matrix(:,1)';
@@ -49,6 +50,7 @@ for i = 1:n
             received_power(i,j) = trace_num_list(i,j);
         else
             file = filenames{i,j};
+            disp(file)
             received_power(i,j) = max_frequency_value(file, cf);
         end
     end
