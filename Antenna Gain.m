@@ -21,10 +21,12 @@ Wavelength = 3*10^8/Frequency;
 %OTHER VALUES: 
 %Trans_Loss = 0.18; %vswr = 1.5
 Misc_Loss = 0;
+
 Rec_Ant_Gain = 12.5;%vary w/ frequency
 Rec_Loss = 0; 
 Distance = 1.778;%anechoic chamber length in m
 Friis_Eq = 20*log10(Wavelength/(4*pi*(Distance)));%FREE SPACE PATH LOSS FAR FIELD ONLY
+
 
 %GAIN CALCULATION:
 % Rec_P = Trans_P + Trans_Ant_Gain - Trans_Loss - Misc_Loss + Rec_Ant_Gain - Rec_Loss + Friis_Eq
