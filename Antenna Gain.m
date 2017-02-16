@@ -9,7 +9,7 @@
 Trans_P = 0; %transmitting 0dB from port 1
 Frequency = 2.45E9;
 
-S11= ;
+S11= -16.46;
 S21 = -32.5;
 
 %CALCULATED VALUES:
